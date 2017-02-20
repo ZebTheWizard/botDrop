@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/botdrop":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/botdrop","hostpath":"/Users/zeb/_Code/botDrop","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/zeb/_Code/botDrop","disabled":false,"__vagrantfile":true}}}

@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
+    if (Auth::check()) {
+      return redirect()->route('dashboard');}
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::post('/userlogin','Auth\AuthController@checkLogin')->name('newlogin');
+Route::post('/userregister','Auth\AuthController@checkRegister')->name('newregister');
+
+Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('auth.basic');
