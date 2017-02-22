@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-    <div id="app">
+    <!-- <div id="app"> -->
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -78,9 +78,19 @@
         </nav>
 
         @yield('content')
-    </div>
+    <!-- </div> -->
 
     <!-- Scripts -->
+    <script src="{{ asset('js/init.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript">
+    $(document).on('click', function(event) {
+      if (!$(event.target).closest('.module .dropdown, .module .image, .module .options').length) {
+        $('.module .options').hide();
+        $('.module').removeClass('disabled').removeClass('enabled')
+      }
+    });
+    </script>
+
 </body>
 </html>
