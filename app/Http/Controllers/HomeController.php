@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Canvas;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $canvases = Canvas::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        return view('dashboard', compact('canvases'));
     }
 }

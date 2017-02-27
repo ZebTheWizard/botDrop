@@ -9,15 +9,17 @@
 }
 
 .module.disabled{
-  -moz-filter:grayscale(100%);
-  -webkit-filter:grayscale(100%);
-  -o-filter:grayscale(100%);
-  -ms-filter:grayscale(100%);
-  filter:grayscale(100%);
+  -moz-filter:grayscale(100%) ;
+  -webkit-filter:grayscale(100%) ;
+  -o-filter:grayscale(100%) ;
+  -ms-filter:grayscale(100%) ;
+  filter:grayscale(100%) ;
 }
 .module.enabled{
-  border-color: #0081ff !important;
+  border-color: #555 !important;
   border-radius: 6px;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.19);
+
 }
 .module {
     display: inline-block;
@@ -27,10 +29,22 @@
     border-color: #bbb;
     background: white;
     margin: 10px;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.09);
     border-radius: 4px;
 }.module.current{
-  border-color: #0081ff;
+  border-color: #555;
+}
+.module.add {
+    box-shadow: none;
+    border: 2px dashed #ccc;
+    background: transparent;
+    cursor: pointer;
+}.module.add .fa {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 35px;
+    color: #ccc;
 }
 .image:hover{
   background-color: #f1f1f1 !important;
@@ -46,6 +60,8 @@
     border-radius: 4px 4px 0 0;
     cursor: pointer;
     padding: 10px;
+}.image.add{
+  height: 100%;
 }
 .module .dropdown {
     position: absolute;
@@ -87,7 +103,7 @@
     width: 0;
     border-width: 0px 9px 8px;
     border-style: solid;
-    border-color: #0081ff transparent;
+    border-color: #555 transparent;
 }
 .options:after {
     content: "";
@@ -111,7 +127,7 @@
     background-size: contain;
 }
 li.item {
-    text-align: left;
+    text-align: center;
     padding: 3px 20px;
     cursor: pointer;
 }
@@ -132,26 +148,56 @@ li.item .fa {
 li.item .fa-check-square-o {
     right: 18px;
 }
+.item.danger {
+    color: white;
+    background: #df3e3e;
+}
+.item.danger:hover {
+    color: white;
+    background: #ab3131;
+}
 </style>
 
 <?php $modules = json_decode(file_get_contents(resource_path('json/modules.json')));
 ?>
 
-@foreach($modules as $module)
+@foreach($canvases as $canvas)
   <div class="module">
-    <div class="image">
-      <div class="src" style="background-image: url({{$module->image}})"> </div>
+    <div class="image" data-action="/c/{{$canvas->url}}">
+      <div class="src" style="background-image: url({{$canvas->image}})"> </div>
     </div>
     <div class="dropdown no-select">
-      <span class="selected">{{$module->dropdown}}</span>
+      <span class="selected">
+        @if($canvas->name)
+          {{$canvas->name}}
+        @else
+          Unnamed Canvas
+        @endif
+
+      </span>
     </div>
     <div class="options">
-      @foreach($module->options as $option)
         <li class="item">
-          <span class="choice">{{$option}} </span>
-          <i class="fa fa-square-o" aria-hidden="true"></i>
+          <span class="choice">Rename</span>
         </li>
-      @endforeach
+        <li class="item">
+          <span class="choice">Share</span>
+        </li>
+        <li class="item danger"
+            data-action="/deleteCanvas"
+            data-method="post"
+            data-json='{
+              "url": "{{$canvas->url}}"
+            }'>
+          <span class="choice ">Delete</span>
+        </li>
     </div>
   </div>
 @endforeach
+
+<div  class="module add"
+      data-action="/createCanvas"
+      data-method="post"
+      data-toggle="tooltip" data-placement="top" title="Create A Canvas">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+</div>

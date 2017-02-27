@@ -19,6 +19,8 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    <script src="https://use.fontawesome.com/d3ead56ef6.js"></script>
+
 </head>
 <body>
     <!-- <div id="app"> -->
@@ -81,16 +83,7 @@
     <!-- </div> -->
 
     <!-- Scripts -->
-    <script src="{{ asset('js/init.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript">
-    $(document).on('click', function(event) {
-      if (!$(event.target).closest('.module .dropdown, .module .image, .module .options').length) {
-        $('.module .options').hide();
-        $('.module').removeClass('disabled').removeClass('enabled')
-      }
-    });
-    </script>
+  @include('layouts.foot')
 
 </body>
 </html>

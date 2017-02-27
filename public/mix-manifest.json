@@ -1,5 +1,6 @@
 {
   "/js/init.js": "/js/init.js",
+  "/js/no.jquery.js": "/js/no.jquery.js",
   "/js/app.js": "/js/app.js",
   "/css/app.css": "/css/app.css"
 }

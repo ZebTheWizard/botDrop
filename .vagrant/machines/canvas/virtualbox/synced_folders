@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/canvas":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/canvas","hostpath":"/Users/zeb/_Code/canvas","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/zeb/_Code/canvas","disabled":false,"__vagrantfile":true}}}

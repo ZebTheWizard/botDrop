@@ -1,4 +1,4 @@
-$('.module .dropdown, .module .image').click(function(){
+$('.module .dropdown').click(function(){
   this_option = $(this).siblings('.options')
   this_parent = $(this).parent()
   $('.module .options').not(this_option).hide();
@@ -18,4 +18,8 @@ $('.module .options .item').click(function(){
   if ($(this).find('i').hasClass('fa-check-square-o')) {
     $(this).parent().siblings('.dropdown').find('.selected').html(option_html)
   }
+})
+
+$('.module.disabled').hover(function(){
+  $(this).unbind('mouseenter mouseleave')
 })
