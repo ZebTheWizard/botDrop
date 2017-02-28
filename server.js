@@ -1,7 +1,8 @@
-global.express = require('express');
+global.express = require('express')
+      ,http    = require('http');
 global.app = express();
-global.server = require('http').createServer(app);
-global.io = require('socket.io')(server);
+global.server = http.createServer(app);
+global.io = require('socket.io').listen(server);
 global.Redis = require('ioredis'),
 global.r = new Redis();
 // global.kernel = require('./kernel.js')
@@ -66,5 +67,5 @@ process.on('exit', function (){
 });
 
 
-server.listen(8000, '0.0.0.0');
+server.listen(8000);
 // console.log('breakpoint');

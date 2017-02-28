@@ -120,5 +120,6 @@ window.__SNIDDL_AJAX__ = {
 </script>
 
 <script src="/js/jquery.event.drag-2.0.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js" charset="utf-8"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js" charset="utf-8"></script> -->
+<script src="http://canvas.sniddl.com:8000/socket.io/socket.io.js"></script>
 <script src="/js/scripts.js"></script>
