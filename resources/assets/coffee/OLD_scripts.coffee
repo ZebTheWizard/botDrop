@@ -15,9 +15,8 @@ App.init = ->
   # set some preferences for our line drawing.
   App.ctx.fillStyle = "solid"
   App.ctx.strokeStyle = "#ECD018"
-  App.ctx.lineWidth = 21
+  App.ctx.lineWidth = 10
   App.ctx.lineCap = "round"
-  App.ctx.lineJoin = "round"
 
   App.img = document.getElementById 'img'
   App.ctx.drawImage App.img,0,0
@@ -50,8 +49,6 @@ App.init = ->
 	Draw Events
 ###
 $('canvas').live 'drag dragstart dragend', (e) ->
-  $('.slideout').hide()
-  $("#colorpicker").hide();
   type = e.handleObj.type
   offset = $(this).offset()
   e.clientX = e.layerX + offset.left
@@ -61,28 +58,6 @@ $('canvas').live 'drag dragstart dragend', (e) ->
   App.draw(x,y,type)
   App.socket.emit('drawClick', { x : x, y : y, type : type, channel : App.img.url})
   return
-
-
-
-$('.slideout').parent().click ->
-  $(this) .find('.slideout') .toggle() .css('right', '-116px')
-.children().not('i').click ->
-  false
-
-
-$('#brush-minus') .click ->
-    App.ctx.lineWidth -= 5 if App.ctx.lineWidth >= 6
-
-$('#brush-plus').click ->
-    App.ctx.lineWidth += 5 if App.ctx.lineWidth <= 100
-
-
-
-
-
-
-
-
 
 
 

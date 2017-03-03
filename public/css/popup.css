@@ -1,0 +1,86 @@
+
+.window {
+    background: white;
+    font-family: sans-serif !important;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 12px 1px rgba(0, 0, 0, 0.39);
+    position: fixed;
+    width: 350px;
+    height: auto;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none !important;
+} .window.minimized {
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    bottom: 0 !important;
+    width: auto !important;
+    max-height: 40px;
+    display: inline-block !important;
+    position: relative !important;
+    float: left !important;
+}
+
+.window .header,
+.window .body,
+.window .footer {
+    padding: 10px;
+    margin-top: -1px;
+}
+.window .header {
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #aaa;
+}
+  .window .header .title {
+    text-align: center;
+    font-size: 12px;
+    margin: 0 60px;}
+  .window .buttons {
+    position: absolute;}
+  .window .button{
+    margin: 0px 2px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .window .footer .buttons {
+    right: 10px;}
+  .window .footer .buttons .button {
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+    line-height: 1.15;
+    font-size: 12px;
+    padding: 2px 5px;
+    background: white;
+}
+    .window .footer .buttons .button:active{
+      background: #444546 !important;
+      border-color: black !important;
+      color: white !important;
+    }
+    .window .footer .buttons .default {
+      background-color: #aab1b7
+    }
+  .window .header .button {
+    border-radius: 100%;
+    outline: none;
+    height: 12px;
+    width: 12px;
+    line-height: 10px;
+    border: none;
+    padding: 0px;}
+.window .footer {
+  border: none;
+  border-radius: 0 0 4px 4px;
+  height: 38px;
+}
+
+#popup-tray {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+}

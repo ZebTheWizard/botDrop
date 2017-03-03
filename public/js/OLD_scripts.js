@@ -15,9 +15,8 @@
     App.ctx = App.canvas.getContext("2d");
     App.ctx.fillStyle = "solid";
     App.ctx.strokeStyle = "#ECD018";
-    App.ctx.lineWidth = 21;
+    App.ctx.lineWidth = 10;
     App.ctx.lineCap = "round";
-    App.ctx.lineJoin = "round";
     App.img = document.getElementById('img');
     App.ctx.drawImage(App.img, 0, 0);
     App.socket = io.connect('http://sniddl.app:8000');
@@ -46,8 +45,6 @@
 
   $('canvas').live('drag dragstart dragend', function(e) {
     var offset, type, x, y;
-    $('.slideout').hide();
-    $("#colorpicker").hide();
     type = e.handleObj.type;
     offset = $(this).offset();
     e.clientX = e.layerX + offset.left;
@@ -61,24 +58,6 @@
       type: type,
       channel: App.img.url
     });
-  });
-
-  $('.slideout').parent().click(function() {
-    return $(this).find('.slideout').toggle().css('right', '-116px');
-  }).children().not('i').click(function() {
-    return false;
-  });
-
-  $('#brush-minus').click(function() {
-    if (App.ctx.lineWidth >= 6) {
-      return App.ctx.lineWidth -= 5;
-    }
-  });
-
-  $('#brush-plus').click(function() {
-    if (App.ctx.lineWidth <= 100) {
-      return App.ctx.lineWidth += 5;
-    }
   });
 
   $(function() {

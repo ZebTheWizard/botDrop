@@ -30,15 +30,15 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 
 Route::get('/c/{url}', function($url){
   $c = Canvas::where('url', $url)->first();
-  $dataURI = Redis::hget('canvas:'.$url, 'data');
-  if($dataURI != "/image/blank.png"){
-    $exploded = explode(',', $dataURI);
-    $decodedDataURI = base64_decode($exploded[1]);
-    $img = Image::make($decodedDataURI);
-    $img->save(public_path('image/canvases/'.$url.'.png'));
-    $c->image = '/image/canvases/'.$url.'.png';
-    $c->save();
-  }
+  // $dataURI = Redis::hget('canvas:'.$url, 'data');
+  // if($dataURI != "/image/blank.png"){
+  //   $exploded = explode(',', $dataURI);
+  //   $decodedDataURI = base64_decode($exploded[1]);
+  //   $img = Image::make($decodedDataURI);
+  //   $img->save(public_path('image/canvases/'.$url.'.png'));
+  //   $c->image = '/image/canvases/'.$url.'.png';
+  //   $c->save();
+  // }
 
   return view('canvas')->with('canvas', $c);
 });
