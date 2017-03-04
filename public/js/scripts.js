@@ -22,9 +22,11 @@
     App.ctx.drawImage(App.img, 0, 0);
     App.socket = io.connect('http://sniddl.app:8000');
     App.socket.on("draw:" + App.img.url, function(data) {
-      return App.draw(data.x, data.y, data.type);
+      return App.draw(data.x, data.y, data.type, data.color, data.size);
     });
-    App.draw = function(x, y, type) {
+    App.draw = function(x, y, type, color, size) {
+      App.ctx.strokeStyle = color;
+      App.ctx.lineWidth = size;
       if (type === "dragstart") {
         App.ctx.beginPath();
         return App.ctx.moveTo(x, y);
@@ -59,7 +61,9 @@
       x: x,
       y: y,
       type: type,
-      channel: App.img.url
+      channel: App.img.url,
+      color: App.ctx.strokeStyle,
+      size: App.ctx.lineWidth
     });
   });
 

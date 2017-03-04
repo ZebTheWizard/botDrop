@@ -158,6 +158,8 @@ li.item .fa-check-square-o {
 }
 </style>
 
+<link rel="stylesheet" href="/css/popup.css">
+
 <?php $modules = json_decode(file_get_contents(resource_path('json/modules.json')));
 ?>
 
@@ -177,7 +179,7 @@ li.item .fa-check-square-o {
       </span>
     </div>
     <div class="options">
-        <li class="item">
+        <li class="item" data-canvas='{{$canvas->url}}'>
           <span class="choice">Rename</span>
         </li>
         <li class="item">
@@ -200,4 +202,15 @@ li.item .fa-check-square-o {
       data-method="post"
       data-toggle="tooltip" data-placement="top" title="Create A Canvas">
   <i class="fa fa-plus" aria-hidden="true"></i>
+</div>
+
+
+<div id="dashboard-popup-wrapper" style="display: none;">
+  <form id="changeCanvasName" action="/nameCanvas" method="post">
+    {{csrf_field()}}
+      <div class="form-group">
+        <input type="text" class="form-control" id="canvasName" name="name" placeholder="Canvas Name" required="true">
+        <input type="hidden" id="form-canvas-url" name="url" value="{{$canvas->url}}">
+      </div>
+  </form>
 </div>

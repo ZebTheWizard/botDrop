@@ -30,11 +30,13 @@ io.set('transports', [ 'websocket', 'flashsocket', 'polling' ] );
   io.sockets.on('connection', function(socket) {
     console.log('user connected');
     socket.on('drawClick', function(data) {
-      console.log(data.channel);
+      console.log(data.color);
       socket.broadcast.emit(`draw:${data.channel}`, {
         x: data.x,
         y: data.y,
-        type: data.type
+        type: data.type,
+        color: data.color,
+        size: data.size
       });
     });
 

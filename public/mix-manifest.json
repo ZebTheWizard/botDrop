@@ -2,5 +2,6 @@
   "/js/init.js": "/js/init.js",
   "/js/no.jquery.js": "/js/no.jquery.js",
   "/js/app.js": "/js/app.js",
+  "/css/canvas.css": "/css/canvas.css",
   "/css/app.css": "/css/app.css"
 }

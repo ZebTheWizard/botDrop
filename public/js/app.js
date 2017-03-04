@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 53);
+/******/ 	return __webpack_require__(__webpack_require__.s = 54);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -10300,7 +10300,7 @@ return jQuery;
 /***/ (function(module, exports, __webpack_require__) {
 
 
-__webpack_require__(34);
+__webpack_require__(35);
 
 /***/ }),
 
@@ -10311,7 +10311,14 @@ __webpack_require__(34);
 
 /***/ }),
 
-/***/ 34:
+/***/ 16:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 35:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$('.module .dropdown').click(function () {
@@ -10343,11 +10350,12 @@ $('.module.disabled').hover(function () {
 
 /***/ }),
 
-/***/ 53:
+/***/ 54:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(15);
+__webpack_require__(15);
+module.exports = __webpack_require__(16);
 
 
 /***/ })

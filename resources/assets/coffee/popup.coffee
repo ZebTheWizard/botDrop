@@ -75,19 +75,20 @@ class window.Popup
         _button.className += _color[i]
         _button.id = _but_ ="popup-#{_color[i]}-#{@id}"
         _buttons.appendChild(_button)
-        _but = document.getElementById(_but_)
         if _color[i] is 'red'
             _button.addEventListener "click", ->
               _this.show = false
             , _this
-        else if _color[i] is 'yellow'
+        else if _color[i] is 'yellow' && _this.pinnable is true
             _button.addEventListener "click", ->
               _this.minimize = true
             , _this
-        else
+        else if _color[i] is 'green' && _this.pinnable is true
             _button.addEventListener "click", ->
               _this.minimize = false
             , _this
+        else
+          _button.style.display = "none"
         i++
 
 
@@ -106,7 +107,10 @@ class window.Popup
     # --------------------------
     _body = document.createElement "div"
     _body.className = 'body'
-    _body.innerHTML = @body
+    if p.el
+      _body.appendChild(@body)
+    else
+      _body.innerHTML = @body
     _window.appendChild(_body)
 
 
@@ -138,7 +142,6 @@ class window.Popup
 
         _button.addEventListener "click", ->
           eval "if(p.on#{@onClickMethod}){p.on#{@onClickMethod}()}"
-          _this.show = false
         , _this
       i++
     _button = document.createElement "button"
@@ -187,7 +190,7 @@ class window.Popup
     set: (str) -> @body = str
 
   @property 'el',
-    set: (str) -> @body = document.querySelector(str).outerHTML
+    set: (str) -> @body = document.querySelector(str)
 
   @property 'setWindow',
     set: -> @window = document.getElementById("popup-window-#{@id}")

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "./";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -12855,7 +12855,7 @@ module.exports = g;
 
 __webpack_require__(4);
 __webpack_require__(3);
-window.ColorPicker = __webpack_require__(49);
+window.ColorPicker = __webpack_require__(50);
 
 /***/ }),
 /* 15 */,
@@ -12878,7 +12878,8 @@ window.ColorPicker = __webpack_require__(49);
 /* 32 */,
 /* 33 */,
 /* 34 */,
-/* 35 */
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12999,7 +13000,7 @@ function fromByteArray (uint8) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13013,9 +13014,9 @@ function fromByteArray (uint8) {
 
 
 
-var base64 = __webpack_require__(35)
-var ieee754 = __webpack_require__(41)
-var isArray = __webpack_require__(37)
+var base64 = __webpack_require__(36)
+var ieee754 = __webpack_require__(42)
+var isArray = __webpack_require__(38)
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -14796,7 +14797,7 @@ function isnan (val) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -14807,16 +14808,16 @@ module.exports = Array.isArray || function (arr) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var prefix = __webpack_require__(46);
-var isArray = __webpack_require__(42);
-var properties = __webpack_require__(40);
-var applyDefaultUnit = __webpack_require__(39);
+var prefix = __webpack_require__(47);
+var isArray = __webpack_require__(43);
+var properties = __webpack_require__(41);
+var applyDefaultUnit = __webpack_require__(40);
 
 var _has = Object.prototype.hasOwnProperty;
 var transformProp = prefix('transform');
@@ -14951,13 +14952,13 @@ function getPropertiesName() {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var trim = __webpack_require__(51);
+var trim = __webpack_require__(52);
 var NUMBER_REGEX = /^-?\d+(\.\d+)?$/;
 
 module.exports = function(value, unit, separator) {
@@ -14986,7 +14987,7 @@ module.exports = function(value, unit, separator) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15025,7 +15026,7 @@ module.exports = {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
@@ -15115,7 +15116,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 
@@ -15154,7 +15155,7 @@ module.exports = isArray || function (val) {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 /*!
@@ -15181,10 +15182,10 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(Buffer) {var isBuffer = __webpack_require__(43);
+/* WEBPACK VAR INJECTION */(function(Buffer) {var isBuffer = __webpack_require__(44);
 var toString = Object.prototype.toString;
 
 /**
@@ -15301,11 +15302,11 @@ module.exports = function kindOf(val) {
   return 'object';
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36).Buffer))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(37).Buffer))
 
 /***/ }),
-/* 45 */,
-/* 46 */
+/* 46 */,
+/* 47 */
 /***/ (function(module, exports) {
 
 // check document first so it doesn't error in node.js
@@ -15380,7 +15381,7 @@ module.exports.dash = prefixDashed
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -15549,7 +15550,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15562,7 +15563,7 @@ Emitter.prototype.hasListeners = function(event){
 
 
 
-var typeOf = __webpack_require__(44);
+var typeOf = __webpack_require__(45);
 
 module.exports = function isNumber(num) {
   var type = typeOf(num);
@@ -15578,7 +15579,7 @@ module.exports = function isNumber(num) {
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15586,10 +15587,10 @@ module.exports = function isNumber(num) {
 
 (function() {
 
-var Emitter = __webpack_require__(47);
-var isNumber = __webpack_require__(48);
-var tinycolor = __webpack_require__(50);
-var transform = __webpack_require__(38);
+var Emitter = __webpack_require__(48);
+var isNumber = __webpack_require__(49);
+var tinycolor = __webpack_require__(51);
+var transform = __webpack_require__(39);
 
 /**
  * Creates a new SimpleColorPicker
@@ -15987,7 +15988,7 @@ if (typeof module !== 'undefined' && module.exports) {
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;// TinyColor v1.4.1
@@ -17189,7 +17190,7 @@ else {
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 
@@ -17209,10 +17210,10 @@ exports.right = function(str){
 
 
 /***/ }),
-/* 52 */,
 /* 53 */,
 /* 54 */,
-/* 55 */
+/* 55 */,
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(14);

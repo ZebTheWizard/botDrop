@@ -6,7 +6,7 @@
 
   window.Popup = (function() {
     function Popup(params) {
-      var _body, _but, _but_, _button, _buttons, _color, _current, _footer, _header, _this, _title, _tray, _window, headerDown, headerMove, headerUp, i, p, xpos, ypos;
+      var _body, _but_, _button, _buttons, _color, _current, _footer, _header, _this, _title, _tray, _window, headerDown, headerMove, headerUp, i, p, xpos, ypos;
       p = params || {};
       _this = this;
       this.appendTo = p.appendTo || 'body';
@@ -68,19 +68,20 @@
           _button.className += _color[i];
           _button.id = _but_ = "popup-" + _color[i] + "-" + this.id;
           _buttons.appendChild(_button);
-          _but = document.getElementById(_but_);
           if (_color[i] === 'red') {
             _button.addEventListener("click", function() {
               return _this.show = false;
             }, _this);
-          } else if (_color[i] === 'yellow') {
+          } else if (_color[i] === 'yellow' && _this.pinnable === true) {
             _button.addEventListener("click", function() {
               return _this.minimize = true;
             }, _this);
-          } else {
+          } else if (_color[i] === 'green' && _this.pinnable === true) {
             _button.addEventListener("click", function() {
               return _this.minimize = false;
             }, _this);
+          } else {
+            _button.style.display = "none";
           }
           i++;
         }
@@ -91,7 +92,11 @@
       _header.appendChild(_title);
       _body = document.createElement("div");
       _body.className = 'body';
-      _body.innerHTML = this.body;
+      if (p.el) {
+        _body.appendChild(this.body);
+      } else {
+        _body.innerHTML = this.body;
+      }
       _window.appendChild(_body);
       _footer = document.createElement("div");
       _footer.className = 'footer';
@@ -110,8 +115,7 @@
           _button.onClickMethod = _current;
           _buttons.appendChild(_button);
           _button.addEventListener("click", function() {
-            eval("if(p.on" + this.onClickMethod + "){p.on" + this.onClickMethod + "()}");
-            return _this.show = false;
+            return eval("if(p.on" + this.onClickMethod + "){p.on" + this.onClickMethod + "()}");
           }, _this);
         }
         i++;
@@ -174,7 +178,7 @@
 
     Popup.property('el', {
       set: function(str) {
-        return this.body = document.querySelector(str).outerHTML;
+        return this.body = document.querySelector(str);
       }
     });
 

@@ -27,10 +27,12 @@ App.init = ->
   App.socket = io.connect('http://sniddl.app:8000')
 
   App.socket.on "draw:#{App.img.url}", (data) ->
-    App.draw(data.x,data.y,data.type)
+    App.draw(data.x, data.y, data.type, data.color, data.size)
 
   # Draw Function
-  App.draw = (x ,y,type) ->
+  App.draw = (x,y,type,color, size) ->
+    App.ctx.strokeStyle = color
+    App.ctx.lineWidth = size
     if type is "dragstart"
       App.ctx.beginPath()
       App.ctx.moveTo(x,y)
@@ -59,7 +61,7 @@ $('canvas').live 'drag dragstart dragend', (e) ->
   x = e.offsetX
   y = e.offsetY
   App.draw(x,y,type)
-  App.socket.emit('drawClick', { x : x, y : y, type : type, channel : App.img.url})
+  App.socket.emit('drawClick', { x : x, y : y, type : type, channel : App.img.url, color: App.ctx.strokeStyle, size: App.ctx.lineWidth})
   return
 
 
