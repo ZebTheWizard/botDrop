@@ -20,7 +20,7 @@
     App.ctx.lineJoin = "round";
     App.img = document.getElementById('img');
     App.ctx.drawImage(App.img, 0, 0);
-    App.socket = io.connect('http://sniddl.app:8000');
+    App.socket = io.connect('http://canvas.sniddl.com:8000');
     App.socket.on("draw:" + App.img.url, function(data) {
       return App.draw(data.x, data.y, data.type, data.color, data.size);
     });

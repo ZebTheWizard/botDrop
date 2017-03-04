@@ -24,7 +24,7 @@ App.init = ->
 
   # Sockets!
 
-  App.socket = io.connect('http://sniddl.app:8000')
+  App.socket = io.connect('http://canvas.sniddl.com:8000')
 
   App.socket.on "draw:#{App.img.url}", (data) ->
     App.draw(data.x, data.y, data.type, data.color, data.size)
