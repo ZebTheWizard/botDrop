@@ -14,6 +14,8 @@
 use App\Canvas;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Http\Request;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\Exception\ProcessFailedException;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -77,6 +79,23 @@ Route::post('/deleteCanvas', function(Request $request){
   return back();
 });
 
+
+Route::get('/a/{name}', function($name){
+  // $path = "/usr/bin/python ".public_path('avatar.py')." {$name} " .public_path('avatar/asdf.jpg'). " 512 ".public_path('fonts/Gidole-Regular.ttf');
+  // // Dump($path);
+  // // $result = exec($path);
+  // // Dump($result);
+
+  $process = new Process('python avatar.py Zeb avatar/zeb.jpg 512 fonts/Gidole-Regular.ttf');
+  $process->run();
+
+  // executes after the command finishes
+  if (!$process->isSuccessful()) {
+      echo $process->getOutput() .'<hr>';
+  }
+
+  echo $process->getOutput() .'<hr>';
+});
 
 
 // Route::post('/autosave', function(Request $request){
