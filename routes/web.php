@@ -80,21 +80,19 @@ Route::post('/deleteCanvas', function(Request $request){
 });
 
 
-Route::get('/a/{name}', function($name){
-  // $path = "/usr/bin/python ".public_path('avatar.py')." {$name} " .public_path('avatar/asdf.jpg'). " 512 ".public_path('fonts/Gidole-Regular.ttf');
-  // // Dump($path);
-  // // $result = exec($path);
-  // // Dump($result);
+Route::get('/avatar/{name}/{size?}', function($name, $size = 512){
 
-  $process = new Process('python avatar.py Zeb avatar/zeb.jpg 512 fonts/Gidole-Regular.ttf');
+  $process = new Process("python avatar.py {$name} avatar/{$name}.jpg {$size} fonts/Gidole-Regular.ttf");
   $process->run();
 
   // executes after the command finishes
   if (!$process->isSuccessful()) {
-      echo $process->getOutput() .'<hr>';
+     print_r('There was an error and I honestly don\'t know why. It\'s probably that stupid permission error. FML!');
+  }else{
+    return Image::make("avatar/{$name}.jpg")->response('jpg');
   }
 
-  echo $process->getOutput() .'<hr>';
+
 });
 
 
